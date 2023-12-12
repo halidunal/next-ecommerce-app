@@ -1,12 +1,14 @@
+"use client"
 import Image from 'next/image'
-import React from 'react'
 import image from "../../../public/images.jpg"
 import {Rating} from "@mui/material"
+import { useRouter } from 'next/navigation'
 
 const ProductCard = ({product}: {product: any}) => {
+	const router = useRouter()
 	let productRate = product?.reviews?.reduce((acc: number,item: any) => acc + item.rating, 0) / product?.reviews?.length
 	return (
-		<div className='w-[200px] shadow-lg rounded-md border cursor-pointer flex flex-col flex-1'>
+		<div onClick={() => router.push(`product/${product.id}`)} className='w-[200px] shadow-lg rounded-md border cursor-pointer flex flex-col flex-1'>
 			<div className='relative h-[240px]'>
 				<Image fill src={image} alt='' className='object-contain'/>
 			</div>
