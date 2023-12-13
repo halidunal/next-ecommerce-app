@@ -72,7 +72,11 @@ const Detail = ({params}: {params: DetailProps}) => {
 					<div className='space-y-2'>
 						<div className='text-slate-500 text-decoration-line: line-through'>{product?.price} USD</div>
 						<div className='text-2xl font-medium'>{product?.price} USD</div>
-						<CartCounter increase={increase} decrease={decrease} cardProduct={cardProduct}/>
+						<div className='flex space-x-5 border-b-2 pb-4'>
+							<CartCounter increase={increase} decrease={decrease} cardProduct={cardProduct}/>
+							<button className='p-3 w-full bg-green-500 rounded-lg text-white text-lg hover:scale-105'>{cardProduct.inStock ? <>Add to Cart</> : <>Notify me when in stock</>}</button>
+							<AiOutlineHeart title="Add to favorites" className='cursor-pointer p-3 w-20 bg-gray-400 rounded-lg text-white text-lg hover:scale-105' size={55}/>
+						</div>						
 					</div>
 				</div>
 			</div>

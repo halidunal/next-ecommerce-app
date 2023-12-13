@@ -5,7 +5,6 @@ import Products from "./components/home/Products";
 export default function Home() {
   return (
     <div className="flex justify-center flex-col items-center">
-      <Category/>
       <Banner/>
       <Products/>
     </div>
