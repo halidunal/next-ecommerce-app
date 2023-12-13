@@ -5,9 +5,9 @@ import ProductCard from './ProductCard'
 
 const Products = () => {
 	return (
-		<div>
+		<div className='mb-6'>
 			<Heading text="Tüm Ürünler" center={false}/>
-			<div className='flex items-center flex-wrap gap-3 md:gap-10'>
+			<div className='flex items-center flex-wrap gap-2'>
 				{
 					products.map(product => (
 						<ProductCard key={product.id} product={product}/>
