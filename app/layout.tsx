@@ -22,7 +22,7 @@ export default function RootLayout({
         <div className='flex flex-col min-h-screen w-[1024px] lg:w-full'>
           <Navbar/>
           <div className='flex flex-col items-center'>
-            <main className='flex justify-center items-center w-[1024px]'>{children}</main>
+            <main className='flex-grow flex justify-center w-[1024px]' style={{minHeight: "calc(100vh - 94px)"}}>{children}</main>
             <Footer/>
           </div >
         </div>
