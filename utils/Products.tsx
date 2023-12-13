@@ -143,4 +143,16 @@ export const products = [
       image: {image},
       reviews: [],
     },
+    {
+      id: "649d775128b6744f0f497041",
+      name: 'Smart Watch(Answer/Make Call)',
+      description:
+        'Bluetooth Call and Message Reminder: The smart watch is equipped with HD speaker, after connecting to your phone via Bluetooth, you can directly use the smartwatches to answer or make calls, read messages, store contacts, view call history. The smartwatch can set up more message notifications in "GloryFit" APP. You will never miss any calls and messages during meetings, workout and riding.',
+      price: 50,
+      brand: "Nerunsa",
+      category: "Watch",
+      inStock: false,
+      image: {image},
+      reviews: [],
+    },
   ];
