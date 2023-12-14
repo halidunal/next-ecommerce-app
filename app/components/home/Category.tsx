@@ -27,7 +27,7 @@ const Category = () => {
 		},
 	]
 	return (
-		<div className='border-b-2 overflow-x-auto w-full flex justify-center bg-slate-100'>
+		<div className='border-b-2 overflow-x-auto w-full flex justify-center'>
 			<div className='flex justify-between w-[1024px]'>
 				{
 					categoryList.map((category, key) => (
