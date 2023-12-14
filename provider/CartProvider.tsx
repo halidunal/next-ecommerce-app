@@ -1,4 +1,4 @@
-import { CartContextProvider } from "../useCart"
+import { CartContextProvider } from "../hooks/useCart"
 
 const CartProvider = ({children}: {children:React.ReactNode}) => {
 	return (

@@ -4,7 +4,7 @@ import './globals.css'
 import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
 import Category from './components/home/Category'
-import CartProvider from '@/hooks/provider/CartProvider'
+import CartProvider from '@/provider/CartProvider'
 import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin'] })

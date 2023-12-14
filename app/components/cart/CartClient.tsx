@@ -9,7 +9,7 @@ import CartCounter from '../general/CartCounter'
 
 const CartClient = () => {
 	const {cartProducts, removeFromCart, removeAll, increase, decrease} = UseCart();
-	const totalAmount = cartProducts?.reduce((acc: any,product: CardProductProps) => acc + product.quantity + product.price, 0)
+	const totalAmount = cartProducts?.reduce((acc: any, product: any) => acc + product.quantity * product.price, 0)
 	if(!cartProducts || cartProducts.length == 0) return <div></div>
 	return (
 		<div className='space-x-4 w-[1024px] flex flex-row mt-10 bg-gray-100 rounded-xl'>
