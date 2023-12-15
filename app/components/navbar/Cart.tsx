@@ -11,9 +11,9 @@ const Cart = () => {
 	return (
 		<div className='hidden md:flex relative cursor-pointer' onClick={() => router.push("/cart")}>
 			<MdOutlineShoppingCart size={25}/>
-			{cartProducts?.length && (
+			{cartProducts?.length ? (
 				<div className='absolute -top-2 -right-2 text-xs w-4 h-4 rounded-full flex items-center justify-center' style={{backgroundColor: "#69a9c3"}}>{cartProducts?.length}</div>
-			)}
+			) : (<></>)}
 		</div>
 	)
 }

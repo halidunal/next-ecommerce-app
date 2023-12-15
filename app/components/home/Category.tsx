@@ -8,22 +8,22 @@ const Category = () => {
 			name: "Shoes"
 		},
 		{
-			name: "Shoes"
+			name: "Men"
 		},
 		{
-			name: "Shoes"
+			name: "Women"
 		},
 		{
-			name: "Shoes"
+			name: "Electronics"
 		},
 		{
-			name: "Shoes"
+			name: "Accesories"
 		},
 		{
-			name: "Shoes"
+			name: "Phone"
 		},
 		{
-			name: "Shoes"
+			name: "Watch"
 		},
 	]
 	return (

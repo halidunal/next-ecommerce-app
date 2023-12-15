@@ -61,7 +61,7 @@ const Detail = ({params}: {params: DetailProps}) => {
 
 	return (
 		<div className='flex w-full m-4 flex-col'>
-			<div className='flex w-full bg-white p-4 rounded-lg'>
+			<div className='flex w-full bg-white border p-4 rounded-lg'>
 				<div className='flex-1 h-[500px] flex items-center border rounded-lg'>
 						<Image src={image} alt="" className='w-full'/>
 				</div>
