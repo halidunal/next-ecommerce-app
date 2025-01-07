@@ -31,7 +31,7 @@ const Category = () => {
 			<div className='flex justify-between w-[1024px]'>
 				{
 					categoryList.map((category, key) => (
-						<div className='rounded-full flex cursor-pointer px-4 py-2 text-center' key={key}>
+						<div className='flex cursor-pointer px-4 py-2 text-center' key={key}>
 							{category.name}
 						</div>
 					))

@@ -22,14 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Toaster position='top-right' reverseOrder={false}/>
+        <Toaster position='top-right' reverseOrder={false} />
         <div className='flex flex-col min-h-screen w-[1024px] lg:w-full'>
           <CartProvider>
-            <Navbar/>
-            <Category/>
-            <div className='flex flex-col items-center bg-gray-100'>
-              <main className='flex-grow flex justify-center w-[1024px] bg-gray-100' style={{minHeight: "calc(100vh - 94px)"}}>{children}</main>
-              <Footer/>
+            <Navbar />
+            <Category />
+            <div className='flex flex-col flex-1 items-center bg-gray-100'>
+              <main className='flex-grow flex justify-center w-[1024px] bg-gray-100'>{children}</main>
+              <Footer />
             </div >
           </CartProvider>
         </div>
