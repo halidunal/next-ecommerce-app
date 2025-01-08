@@ -57,7 +57,7 @@ const RegisterClient: React.FC<RegisterClientProps> = ({ currentUser }) => {
 				<Input placeholder="Password" type='password' id="password" register={register} errors={errors} required />
 				<button onClick={handleSubmit(onSubmit)} className='rounded border p-2 border-slate-400 w-full'>Register</button>
 				<div className='text-center text-sm'>Do you already have an account <Link className='underline text-red-500' href="/login">Login</Link></div>
-				<button className='flex gap-2 items-center rounded border p-2 w-full justify-center'><FaGoogle />Login with Google</button>
+				<button className='flex gap-2 items-center rounded border p-2 w-full justify-center' onClick={() => signIn("google")}><FaGoogle />Login with Google</button>
 			</div>
 		</AuthContainer>
 	)

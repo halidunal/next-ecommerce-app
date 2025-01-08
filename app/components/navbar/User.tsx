@@ -20,8 +20,8 @@ const User: React.FC<UserProps> = ({ currentUser }) => {
 			<FaUserCircle size={25} />
 			{currentUser ?
 				(<div className='flex text-md space-x-1 font-semibold'>
-					<div className='hover:scale-105'><Link href="/profile">{currentUser.name}</Link></div>
-					<div className='flex items-center' onClick={logout}><PiSignOut className='hover:scale-105' size={20} /></div>
+					<div><Link href="/profile">Hesabım</Link></div>
+					{/* <div className='flex items-center' onClick={logout}><PiSignOut className='hover:scale-105' size={20} /></div> */}
 				</div>) : (
 					<div className='flex flex-col text-xs space-y-1 font-semibold'>
 						<div className='hover:scale-105'><Link href="/login">Login</Link></div>

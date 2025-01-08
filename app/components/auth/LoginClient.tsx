@@ -50,7 +50,7 @@ const LoginClient: React.FC<LoginClientProps> = ({ currentUser }) => {
 				<Input placeholder="Password" type='password' id="password" register={register} errors={errors} required />
 				<button onClick={handleSubmit(onSubmit)} className='rounded border p-2 border-slate-400 w-full'>Login</button>
 				<div className='text-center text-sm'>Don`t you have an account <Link className='underline text-red-500' href="/register">Register</Link></div>
-				<button className='flex gap-2 items-center rounded border p-2 w-full justify-center'><FaGoogle />Login with Google</button>
+				<button className='flex gap-2 items-center rounded border p-2 w-full justify-center' onClick={() => signIn("google")}><FaGoogle />Login with Google</button>
 			</div>
 		</AuthContainer>
 	)
