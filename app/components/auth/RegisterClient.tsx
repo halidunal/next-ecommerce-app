@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import AuthContainer from '../containers/AuthContainer'
 import Heading from '../general/Heading'
 import Input from '../general/Input'
@@ -11,8 +11,16 @@ import toast from 'react-hot-toast'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 
-const RegisterClient = () => {
-	const router = useRouter()
+interface RegisterClientProps {
+	currentUser: any
+}
+const RegisterClient: React.FC<RegisterClientProps> = ({ currentUser }) => {
+	const router = useRouter();
+	useEffect(() => {
+		if (currentUser) {
+			router.push("/");
+		}
+	}, [])
 	const {
 		register,
 		handleSubmit,

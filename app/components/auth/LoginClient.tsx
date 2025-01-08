@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import AuthContainer from '../containers/AuthContainer'
 import Heading from '../general/Heading'
 import Input from '../general/Input'
@@ -10,14 +10,23 @@ import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 
-const LoginClient = () => {
+interface LoginClientProps {
+	currentUser: any
+}
+const LoginClient: React.FC<LoginClientProps> = ({ currentUser }) => {
 	const router = useRouter();
+	useEffect(() => {
+		if (currentUser) {
+			router.push("/");
+		}
+	}, [])
 	const {
 		register,
 		handleSubmit,
 		watch,
 		formState: { errors },
 	} = useForm<FieldValues>()
+
 	const onSubmit: SubmitHandler<FieldValues> = (data) => {
 		signIn("credentials", {
 			...data,

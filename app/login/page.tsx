@@ -1,10 +1,11 @@
-import React from 'react'
 import LoginClient from '../components/auth/LoginClient'
+import { getUser } from '../actions/userActions'
 
-const Login = () => {
+const Login = async () => {
+	const currentUser = await getUser();
 	return (
 		<div>
-			<LoginClient/>
+			<LoginClient currentUser={currentUser} />
 		</div>
 	)
 }
