@@ -28,7 +28,7 @@ const RegisterClient = () => {
 				redirect: false
 			}).then((callback) => {
 				if (callback?.ok) {
-					router.push("/cart");
+					router.push("/");
 					router.refresh();
 				}
 				if (callback?.error) {
