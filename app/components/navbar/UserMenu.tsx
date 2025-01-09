@@ -15,32 +15,32 @@ const UserMenu = ({ visibility }: any) => {
 		{
 			title: "Orders",
 			icon: <FaCube />,
-			route: "/orders"
+			route: "/account/orders"
 		},
 		{
 			title: "Favorites",
 			icon: <FaRegHeart />,
-			route: "/favorites"
+			route: "/account/favorites"
 		},
 		{
 			title: "Returns",
 			icon: <FaRotateLeft />,
-			route: "/returns"
+			route: "/account/returns"
 		},
 		{
 			title: "Reviews",
 			icon: <FaRegMessage />,
-			route: "/reviews"
+			route: "/account/reviews"
 		},
 		{
 			title: "Coupons",
 			icon: <FaTicketAlt />,
-			route: "/coupons"
+			route: "/account/coupons"
 		},
 		{
 			title: "Help & Contact",
 			icon: <FaRegQuestionCircle />,
-			route: "/help"
+			route: "/account/help"
 		}
 	]
 	return (
