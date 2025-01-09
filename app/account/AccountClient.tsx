@@ -104,7 +104,9 @@ const AccountClient: React.FC<AccountClientProps> = ({ currentUser }) => {
 						<AccountContainer>
 							<>{Component}</>
 						</AccountContainer> :
-						<></>
+						<div className='p-4'>
+							account
+						</div>
 					}
 				</div>
 			</div>
