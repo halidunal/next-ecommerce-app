@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Orders = () => {
+const Orders = ({ currentUser }: any) => {
 	return (
 		<div id='orders'>orders </div>
 	)

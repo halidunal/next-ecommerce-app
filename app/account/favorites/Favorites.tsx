@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Favorites = () => {
+const Favorites = ({ currentUser }: any) => {
 	return (
 		<div>Favorites</div>
 	)

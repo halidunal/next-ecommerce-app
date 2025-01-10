@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Help = () => {
+const Help = ({ currentUser }: any) => {
 	return (
 		<div>Help</div>
 	)

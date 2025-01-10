@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Returns = () => {
+const Returns = ({ currentUser }: any) => {
 	return (
 		<div>Returns</div>
 	)

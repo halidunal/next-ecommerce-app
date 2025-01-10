@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Coupons = () => {
+const Coupons = ({ currentUser }: any) => {
 	return (
 		<div>Coupons</div>
 	)
