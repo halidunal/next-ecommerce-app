@@ -2,11 +2,15 @@ import Dropdown from '@/app/components/general/Dropdown'
 import Input from '@/app/components/general/Input'
 import Warning from '@/app/components/general/Warning'
 import firebase from '@/libs/firebase'
+import axios from 'axios'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form"
+import toast from 'react-hot-toast'
 
 const AddProduct = ({ currentUser }: any) => {
+	const router = useRouter();
 	const {
 		register,
 		handleSubmit,
@@ -47,8 +51,7 @@ const AddProduct = ({ currentUser }: any) => {
 			try {
 
 				const storage = getStorage(firebase);
-				console.log(storage)
-				const storageRef = ref(storage, `images-${currentUser.name}-${data.image.lastModified}.jpg`);
+				const storageRef = ref(storage, `images-${currentUser.name}-${image?.lastModified}`);
 
 				const uploadTask = uploadBytesResumable(storageRef, image);
 				await new Promise<void>((resolve, reject) => {
@@ -71,8 +74,8 @@ const AddProduct = ({ currentUser }: any) => {
 						() => {
 							getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
 								setUploadedImageUrl(downloadURL);
+								resolve();
 							});
-							resolve()
 						}
 					);
 				})
@@ -83,6 +86,13 @@ const AddProduct = ({ currentUser }: any) => {
 		}
 		await handleChange();
 		var newData = { ...data, image: uploadedImageUrl }
+
+		axios.post("/api/product", newData).then(() => {
+			toast.success("Product created!");
+			router.refresh();
+		}).catch((error) =>{
+			console.log(error)
+		})
 	}
 
 	return (
