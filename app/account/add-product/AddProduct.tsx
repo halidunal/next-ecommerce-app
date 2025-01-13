@@ -86,6 +86,14 @@ const AddProduct = ({ currentUser }: any) => {
 		}
 		await handleChange();
 		var newData = { ...data, image: uploadedImageUrl }
+		axios.post('/api/product', newData)
+			.then(() => {
+				toast.success('Product adding process successful.')
+				router.refresh();
+
+			}).catch((error) => {
+				console.log(error, "error")
+			})
 	}
 
 	return (
