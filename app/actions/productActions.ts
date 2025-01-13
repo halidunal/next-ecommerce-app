@@ -5,7 +5,7 @@ export interface IProductParams {
 	search?: string | null
 }
 
-export default async function getProducts(params: IProductParams) {
+export async function getProducts(params: IProductParams) {
 	try {
 		const { category, search } = params;
 		let searchString = search;
@@ -46,6 +46,31 @@ export default async function getProducts(params: IProductParams) {
 		})
 
 		return products;
+	} catch (error: any) {
+		throw new Error(error)
+	}
+}
+
+
+export async function getProduct(params: { id: string }) {
+	try {
+		const product = await prisma.product.findUnique({
+			where: {
+				id: params.id
+			},
+			include: {
+				reviews: {
+					include: {
+						user: true
+					},
+					orderBy: {
+						createdDate: "desc"
+					}
+				}
+			}
+		})
+		if (!product) return null;
+		return product;
 	} catch (error: any) {
 		throw new Error(error)
 	}
