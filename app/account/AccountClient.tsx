@@ -92,8 +92,8 @@ const AccountClient: React.FC<AccountClientProps> = ({ currentUser, products }) 
 		}
 	]
 	return (
-		<div className='flex w-full gap-5 mt-4 mb-4'>
-			<div className='bg-white w-80 border shadow-lg rounded-md flex flex-col justify-between'>
+		<div className='flex gap-5 mt-4 mb-4 flex-1'>
+			<div className='bg-white border shadow-lg rounded-md flex flex-col justify-between'>
 				<div>
 					<div className='p-3 text-sm text-slate-700'>Merhaba, <span className='text-base cursor-pointer border-b-2 border-slate-500' onClick={() => router.push("/account")}>{currentUser.name}</span></div>
 					{currentUser.role == "ADMIN" && <UserMenuItem key={"manage-products"} item={{ title: "Manage Products", icon: <FaCog />, route: "/account/manage-products" }} />}
@@ -106,7 +106,7 @@ const AccountClient: React.FC<AccountClientProps> = ({ currentUser, products }) 
 					<UserMenuItem key={"logout"} item={{ title: "Sign out", icon: <FaSignOutAlt />, route: "/" }} />
 				</div>
 			</div>
-			<div className='flex flex-col w-full gap-5'>
+			<div className='flex flex-col flex-1 gap-5' style={{ width: "inherit" }}>
 				<div className='bg-white text-slate-700 text-md font-semibold p-2 border shadow-lg rounded-md'>
 					{pathname?.replace("/", "").replace("-", " ").toLocaleUpperCase()}
 				</div>

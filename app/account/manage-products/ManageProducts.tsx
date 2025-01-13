@@ -1,13 +1,13 @@
 import Warning from "@/app/components/general/Warning"
 import firebase from "@/libs/firebase"
 import { DataGrid, GridColDef } from "@mui/x-data-grid"
-import { Product } from "@prisma/client"
 import axios from "axios"
 import { deleteObject, getStorage, ref } from "firebase/storage"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { SVGProps, useCallback, useEffect } from "react"
+import { useCallback } from "react"
 import toast from "react-hot-toast"
+import { FaTrashAlt } from "react-icons/fa"
 
 const ManageProducts = ({ currentUser, products }: any) => {
 	const storage = getStorage(firebase)
@@ -36,7 +36,6 @@ const ManageProducts = ({ currentUser, products }: any) => {
 				return (
 					<div className="flex items-center justify-center h-full">
 						<Image src={params.row.image} alt="" width={100} height={52} style={{ maxHeight: "52px", width: "auto", objectFit: "contain" }} />
-
 					</div>
 				)
 			}
@@ -52,8 +51,8 @@ const ManageProducts = ({ currentUser, products }: any) => {
 			width: 100,
 			renderCell: (params: any) => {
 				return (
-					<button onClick={() => handleDelete(params.row.id, params.row.image)} className="mx-4 text-red-500 cursor-pointer ">
-						Sil
+					<button onClick={() => handleDelete(params.row.id, params.row.image)} title="delete" className="mx-4 text-red-500 cursor-pointer ">
+						<FaTrashAlt />
 					</button>
 				)
 			}
@@ -61,19 +60,19 @@ const ManageProducts = ({ currentUser, products }: any) => {
 	]
 
 	const handleDelete = useCallback(async (id: string, image: any) => {
-		toast.success('sildirme işlemi icin bekleyin...')
+		toast.success('Please wait for delete process...')
 		const handleDeleteImg = async () => {
 			try {
 				const imageRef = ref(storage, image)
 				await deleteObject(imageRef)
 			} catch (error) {
-				return console.log("bir hata mevcut", error)
+				return console.log("Error", error)
 			}
 		}
 		await handleDeleteImg();
 		axios.delete(`/api/product/${id}`)
 			.then(() => {
-				toast.success('sildirme işlemi basarılı')
+				toast.success('Remove process successful.')
 				router.refresh();
 			})
 			.catch((error: any) => {
@@ -93,7 +92,7 @@ const ManageProducts = ({ currentUser, products }: any) => {
 							paginationModel: { page: 0, pageSize: 50 },
 						},
 					}}
-					pageSizeOptions={[5, 10]}
+					pageSizeOptions={[20, 50, 100]}
 					checkboxSelection
 				/>
 			}</div>
