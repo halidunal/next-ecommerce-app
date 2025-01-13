@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { FaCube, FaPlus, FaRegHeart, FaRegQuestionCircle, FaSignOutAlt, FaTicketAlt } from 'react-icons/fa'
+import { FaCog, FaCube, FaPlus, FaRegHeart, FaRegQuestionCircle, FaSignOutAlt, FaTicketAlt } from 'react-icons/fa'
 import { FaRegMessage, FaRotateLeft } from 'react-icons/fa6'
 import UserMenuItem from '../components/navbar/UserMenuItem'
 import { useRouter } from 'next/navigation'
@@ -14,12 +14,14 @@ import Reviews from './reviews/Reviews'
 import Coupons from './coupons/Coupons'
 import Help from './help/Help'
 import AddProduct from './add-product/AddProduct'
+import ManageProducts from './manage-products/ManageProducts'
 
 interface AccountClientProps {
 	currentUser: any
+	products?: any
 }
 
-const AccountClient: React.FC<AccountClientProps> = ({ currentUser }) => {
+const AccountClient: React.FC<AccountClientProps> = ({ currentUser, products }) => {
 	const router = useRouter();
 	const pathname = usePathname();
 	const repPathname = pathname?.replace("/account/", "")
@@ -47,6 +49,9 @@ const AccountClient: React.FC<AccountClientProps> = ({ currentUser }) => {
 			break;
 		case "Add-product":
 			Component = <AddProduct currentUser={currentUser} />
+			break;
+		case "Manage-products":
+			Component = <ManageProducts currentUser={currentUser} products={products} />
 			break;
 	}
 
@@ -91,7 +96,8 @@ const AccountClient: React.FC<AccountClientProps> = ({ currentUser }) => {
 			<div className='bg-white w-80 border shadow-lg rounded-md flex flex-col justify-between'>
 				<div>
 					<div className='p-3 text-sm text-slate-700'>Merhaba, <span className='text-base cursor-pointer border-b-2 border-slate-500' onClick={() => router.push("/account")}>{currentUser.name}</span></div>
-					{currentUser.role == "ADMIN" && <UserMenuItem key={"addProduct"} item={{ title: "Add Product", icon: <FaPlus />, route: "/account/add-product" }} />}
+					{currentUser.role == "ADMIN" && <UserMenuItem key={"manage-products"} item={{ title: "Manage Products", icon: <FaCog />, route: "/account/manage-products" }} />}
+					{currentUser.role == "ADMIN" && <UserMenuItem key={"add-product"} item={{ title: "Add Product", icon: <FaPlus />, route: "/account/add-product" }} />}
 					{menuItems.map((item, key) => (
 						<UserMenuItem key={key} index={key} item={item} />
 					))}

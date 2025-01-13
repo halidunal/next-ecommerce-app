@@ -1,12 +1,17 @@
+"use client"
 import Dropdown from '@/app/components/general/Dropdown'
 import Input from '@/app/components/general/Input'
 import Warning from '@/app/components/general/Warning'
 import firebase from '@/libs/firebase'
+import axios from 'axios'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form"
+import toast from 'react-hot-toast'
 
 const AddProduct = ({ currentUser }: any) => {
+	const router = useRouter();
 	const {
 		register,
 		handleSubmit,
@@ -47,8 +52,7 @@ const AddProduct = ({ currentUser }: any) => {
 			try {
 
 				const storage = getStorage(firebase);
-				console.log(storage)
-				const storageRef = ref(storage, `images-${currentUser.name}-${data.image.lastModified}.jpg`);
+				const storageRef = ref(storage, `images-${currentUser.name}-${image?.lastModified}`);
 
 				const uploadTask = uploadBytesResumable(storageRef, image);
 				await new Promise<void>((resolve, reject) => {
@@ -71,18 +75,25 @@ const AddProduct = ({ currentUser }: any) => {
 						() => {
 							getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
 								setUploadedImageUrl(downloadURL);
+								resolve();
 							});
-							resolve()
 						}
 					);
 				})
-
 			} catch (error) {
 				console.log(error)
 			}
 		}
 		await handleChange();
 		var newData = { ...data, image: uploadedImageUrl }
+		axios.post('/api/product', newData)
+			.then(() => {
+				toast.success('Product adding process successful.')
+				router.refresh();
+
+			}).catch((error) => {
+				console.log(error, "error")
+			})
 	}
 
 	return (
@@ -138,7 +149,7 @@ const AddProduct = ({ currentUser }: any) => {
 					/>
 					<div>
 						<label htmlFor='category' className='text-md'>Category</label>
-						<Dropdown id='category' name='category' onChange={(e: any) => onChangeDropdown(e)} data={["Computer", "Laptop", "Mouse", "Phone"]}></Dropdown>
+						<Dropdown id='category' name='category' value={category} onChange={(e: any) => onChangeDropdown(e)} data={["Computer", "Laptop", "Mouse", "Phone"]}></Dropdown>
 					</div>
 					<input type='file' onChange={handleImage}></input>
 					<button onClick={handleSubmit(onSubmit)} className='mt-4 rounded border p-2 border-slate-400 w-full'>Kaydet</button>
